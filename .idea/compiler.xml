@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dom4jForSirius" />
+        <module name="dom4jUtil" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dom4jForSirius" target="1.8" />
+      <module name="dom4jUtil" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
