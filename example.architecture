@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architecture:DsamlModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:architecture="http://www.example.org/architecture">
+  <ownedElement xsi:type="architecture:Component" name="bbb">
+    <portOfPackage name="Port"/>
+  </ownedElement>
+  <ownedElement xsi:type="architecture:Component" name="aaa">
+    <portOfPackage name="Port" dependence="//@ownedElement.0/@portOfPackage.0"/>
+  </ownedElement>
+  <ownedElement xsi:type="architecture:System" name="System">
+    <ownedElement xsi:type="architecture:Component" name="Component1">
+      <ownedElement xsi:type="architecture:Class" name="aaabbb" association="//@ownedElement.2/@ownedElement.0/@ownedElement.1 //@ownedElement.2/@ownedElement.0/@ownedElement.2 //@ownedElement.2/@ownedElement.0/@ownedElement.4"/>
+      <ownedElement xsi:type="architecture:Class" name="dddfdf"/>
+      <ownedElement xsi:type="architecture:Class" name="ggg"/>
+      <ownedElement xsi:type="architecture:Class" name="fff"/>
+      <ownedElement xsi:type="architecture:Class" name="ttt"/>
+    </ownedElement>
+  </ownedElement>
+  <ownedElement xsi:type="architecture:Component" name="Component2">
+    <ownedElement xsi:type="architecture:Class" name="dsafds"/>
+  </ownedElement>
+</architecture:DsamlModel>
