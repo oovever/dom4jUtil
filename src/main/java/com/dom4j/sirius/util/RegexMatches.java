@@ -5,13 +5,15 @@ package com.dom4j.sirius.util;
  * 2018/3/28 14:48
  */
 public class RegexMatches {
-    public static String regexMatchOwnedElement(String source) {
-        String target=source.replaceAll("@ownedElement", "");
+    /**
+     * 过滤@ownedElement字符串
+     * @param source 要处理的字符串
+     * @param replace 正则表达式
+     * @return 返回正则表达式处理结果
+     */
+    public static String regexMatchOwnedElement(String source,String replace) {
+        String target=source.replaceAll(replace, "");
+        return target;
+    }
 
-        return target;
-    }
-    public static String regexMatchSymbol(String source) {
-        String target=source.replaceAll("/", "");
-        return target;
-    }
 }
