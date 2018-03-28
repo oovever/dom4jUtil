@@ -10,9 +10,11 @@
     <ownedElement xsi:type="architecture:Component" name="Component1">
       <ownedElement xsi:type="architecture:Class" name="aaabbb" association="//@ownedElement.2/@ownedElement.0/@ownedElement.1 //@ownedElement.2/@ownedElement.0/@ownedElement.2 //@ownedElement.2/@ownedElement.0/@ownedElement.4"/>
       <ownedElement xsi:type="architecture:Class" name="dddfdf"/>
-      <ownedElement xsi:type="architecture:Class" name="ggg"/>
+      <ownedElement xsi:type="architecture:Class" name="ggg" generalization="//@ownedElement.2/@ownedElement.0/@ownedElement.6" realize="//@ownedElement.2/@ownedElement.0/@ownedElement.5"/>
       <ownedElement xsi:type="architecture:Class" name="fff"/>
       <ownedElement xsi:type="architecture:Class" name="ttt"/>
+      <ownedElement xsi:type="architecture:Interface" name="Interface"/>
+      <ownedElement xsi:type="architecture:Class" name="dfasdfasdf"/>
     </ownedElement>
   </ownedElement>
   <ownedElement xsi:type="architecture:Component" name="Component2">

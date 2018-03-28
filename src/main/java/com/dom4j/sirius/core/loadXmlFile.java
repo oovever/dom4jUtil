@@ -14,6 +14,11 @@ import java.util.*;
  * 2018/3/25 21:15
  */
 public class loadXmlFile {
+//    当前编号，类型，名称
+    static Map<String, Map<String, String>> elementName = new HashMap<>();
+    static Map<String, List<String>> callElement = new HashMap<>();
+    static Map<String, List<String>> generalizationElement = new HashMap<>();
+    static Map<String, List<String>> realizeElement = new HashMap<>();
     static List<Element> elements = new ArrayList<>();
     public static void main(String[] args) throws DocumentException {
         SAXReader         sax      =new SAXReader();//创建一个SAXReader对象
@@ -29,56 +34,42 @@ public class loadXmlFile {
      * 从指定节点开始,递归遍历所有子节点
      * @author oovever
      */
-    public static void getNodes(org.dom4j.Element node, String parent){
+    public static void getNodes(org.dom4j.Element node, String current){
+
         Element element = new Element();
         System.out.println("--------------------");
         //当前节点的名称、文本内容和属性
         System.out.println("当前节点名称："+node.getName());//当前节点名称
         System.out.println("当前节点的内容："+node.getTextTrim());//当前节点名称
         List<Attribute> listAttr =node.attributes();//当前节点的所有属性的list
-        element.setParent(parent);
-        System.out.println("第"+parent+"个");
+        element.setParent(current);
+        System.out.println("第"+current+"个");
         for(Attribute attr:listAttr){//遍历当前节点的所有属性
+//            类型，名称
+            Map<String, String> typeAndName = new HashMap<>();
             String name=attr.getName();//属性名称
             String value=attr.getValue();//属性的值
+            String typeOfAttr=null;
+            String nameOfAttr = null;
             if(name.equals("type")){
                 element.setType(value);
             }else if(name.equals("name")){
                 element.setType(value);
+            }else if(name.equals("generalization")){
+
+            }
+            if(typeOfAttr!=null&&typeAndName!=null){
+                typeAndName.put(typeOfAttr, nameOfAttr);
+                elementName.put(current, typeAndName);
             }
             System.out.println("属性名称："+name+"属性值："+value);
         }
         elements.add(element);
-//        String parentname = null;
-//        while (node.getParent()!=null&&node.getParent().attribute("type")!=null&&node.getParent().attribute("name")!=null){
-//            parentname += node.getParent().attribute("name").getValue() + "/";
-//        }
-//        if(node.getParent()!=null&&node.getParent().attribute("type")!=null&&node.getParent().attribute("name")!=null) {
-//            System.out.println("父亲" + node.getParent().attribute("type").getValue() + " " + node.getParent().attribute("name").getValue());
-//        }
-        //递归遍历当前节点所有的子节点
         List<org.dom4j.Element> listElement =node.elements();//所有一级子节点的list
         for(int i=0;i<listElement.size();i++){
-            parent=parent+"."+String.valueOf(i);
-            getNodes(listElement.get(i),parent);//递归
-            parent = parent.substring(0, parent.length() - 2);
-        }
-//        for(Element e:listElement){//遍历所有一级子节点
-//           getNodes(e,num);//递归
-//        }
-    }
-    /**
-     * 遍历当前节点元素下面的所有(元素的)子节点
-     *
-     * @param node
-     */
-    public static void listNodes(org.dom4j.Element node) {
-        System.out.println("文档根元素是："+node.getName());
-        //获得根元素的所有子元素
-        List<org.dom4j.Element> childList =node.elements();
-        for(int i=0;i<childList.size();i++) {
-            org.dom4j.Element element =childList.get(i);
-            System.out.println("第"+(i+1)+"个孩子节点是："+element.getName());
+            current=current+"."+String.valueOf(i);
+            getNodes(listElement.get(i),current);//递归
+            current = current.substring(0, current.length() - 2);
         }
     }
 }
