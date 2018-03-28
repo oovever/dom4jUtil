@@ -10,6 +10,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.dom4j.sirius.util.RegexMatches.regexMatchOwnedElement;
+import static com.dom4j.sirius.util.RegexMatches.regexMatchSymbol;
+
 /**
  * 读取XML文件
  * @author OovEver
@@ -86,13 +89,5 @@ public class loadXmlFile {
         }
     }
 
-    public static String regexMatchOwnedElement(String source) {
-        String target=source.replaceAll("@ownedElement", "");
 
-        return target;
-    }
-    public static String regexMatchSymbol(String source) {
-        String target=source.replaceAll("/", "");
-        return target;
-    }
 }
