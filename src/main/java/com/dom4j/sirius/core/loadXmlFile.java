@@ -2,14 +2,12 @@ package com.dom4j.sirius.core;
 
 
 import com.dom4j.sirius.Common.Constant;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.*;
 import org.dom4j.io.SAXReader;
 import java.io.File;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import static com.dom4j.sirius.util.RegexMatches.regexMatchOwnedElement;
 

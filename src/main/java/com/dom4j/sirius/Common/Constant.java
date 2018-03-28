@@ -1,5 +1,9 @@
 package com.dom4j.sirius.Common;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 定义公用的基本参数设置
  * @author OovEver
