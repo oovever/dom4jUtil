@@ -7,6 +7,8 @@ import org.dom4j.io.SAXReader;
 
 import java.io.File;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 读取XML文件
@@ -16,6 +18,7 @@ import java.util.*;
 public class loadXmlFile {
 //    当前编号，类型，名称
     static Map<String, Map<String, String>> elementName = new HashMap<>();
+//    调用者  调用的类或者接口
     static Map<String, List<String>> callElement = new HashMap<>();
     static Map<String, List<String>> generalizationElement = new HashMap<>();
     static Map<String, List<String>> realizeElement = new HashMap<>();
@@ -55,10 +58,20 @@ public class loadXmlFile {
                 element.setType(value);
             }else if(name.equals("name")){
                 element.setType(value);
-            }else if(name.equals("generalization")){
-
+            }else if(name.equals("association")){
+                value = regexMatchOwnedElement(value);
+                value = regexMatchSymbol(value);
+                String []valueArr=value.split(" ");
+                if (callElement.get(current) == null) {
+                    callElement.put(current, new ArrayList<String>());
+                }
+                System.out.println("-------association----------");
+                for(int i=0;i<valueArr.length;i++) {
+                    valueArr[i] = "0" + valueArr[i];
+                    callElement.get(current).add(valueArr[i]);
+                }
             }
-            if(typeOfAttr!=null&&typeAndName!=null){
+            if(typeOfAttr!=null&&nameOfAttr!=null){
                 typeAndName.put(typeOfAttr, nameOfAttr);
                 elementName.put(current, typeAndName);
             }
@@ -71,5 +84,15 @@ public class loadXmlFile {
             getNodes(listElement.get(i),current);//递归
             current = current.substring(0, current.length() - 2);
         }
+    }
+
+    public static String regexMatchOwnedElement(String source) {
+        String target=source.replaceAll("@ownedElement", "");
+
+        return target;
+    }
+    public static String regexMatchSymbol(String source) {
+        String target=source.replaceAll("/", "");
+        return target;
     }
 }
