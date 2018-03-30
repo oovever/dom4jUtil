@@ -38,7 +38,9 @@ public class loadXmlFile {
         System.out.println("-----------call Element-------------");
         System.out.println(callElement);
         System.out.println("------------get Children-------------");
-        System.out.println(getNodeChildren.getChildren(elementName,"0.2.0"));
+        System.out.println(getNode.getNodeChildren(elementName,"0.2.0"));
+        System.out.println("------------get GlobalName-------------");
+        System.out.println(getNode.getGlobalNodeName(elementName,"0.2.0.0"));
     }
 
     /**
