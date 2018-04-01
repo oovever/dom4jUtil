@@ -27,7 +27,7 @@ public class loadXmlFile {
     //    调用者 实现的接口
     static Map<String, List<String>> realizeElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
-        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\example.architecture";
+        String file = "E:\\git库\\example.architecture";
         getNodes(file);
         for (String key : elementName.keySet()) {
             System.out.print("当前节点"+key+"------");
@@ -37,10 +37,12 @@ public class loadXmlFile {
         }
         System.out.println("-----------call Element-------------");
         System.out.println(callElement);
-        System.out.println("------------get Children-------------");
-        System.out.println(getNode.getNodeChildren(elementName,"0.2.0"));
-        System.out.println("------------get GlobalName-------------");
-        System.out.println(getNode.getGlobalNodeName(elementName,"0.2.0.0"));
+        System.out.println("-----------all GlobalName-------------");
+        System.out.println(getNode.getGlobalNodeAllName(elementName));
+//        System.out.println("------------get Children-------------");
+//        System.out.println(getNode.getNodeChildren(elementName,"0.2.0"));
+//        System.out.println("------------get GlobalName-------------");
+//        System.out.println(getNode.getGlobalNodeName(elementName,"0.2.0.0"));
     }
 
     /**

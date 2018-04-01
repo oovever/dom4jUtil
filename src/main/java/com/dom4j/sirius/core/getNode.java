@@ -90,4 +90,19 @@ public class getNode {
         return nodeType;
     }
 
+    /**
+     * 获取xml文件中的所有节点全局限定名
+     * @param elementName  存储所有编号 类型 名称的hashmap
+     * @return 所有节点的全局限定名
+     */
+    public static List<String> getGlobalNodeAllName(Map<String, Map<String, String>> elementName) {
+        List<String> res = new ArrayList<>();
+        for (String key : elementName.keySet()) {
+            String globalNodeName = getGlobalNodeName(elementName, key);
+            if(globalNodeName!=null)
+            res.add(globalNodeName);
+        }
+        return res;
+    }
+
 }

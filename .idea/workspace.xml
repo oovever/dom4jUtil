@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee1f935-0680-4bea-b35f-2097cddcf7ed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNodeChildren.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,25 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loadXmlFile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="loadXmlFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="34" />
+            <state relative-caret-position="238">
+              <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
-                <element signature="method#getNodes#1;class#loadXmlFile#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getNode.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="getNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="195">
+              <caret line="97" column="99" lean-forward="true" selection-start-line="97" selection-start-column="99" selection-end-line="97" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
@@ -67,16 +66,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
               <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DomWrite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/DomWrite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,8 +113,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/dom4j/sirius/core/getNodeChildrenTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNodeChildren.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/Pair.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
       </list>
     </option>
   </component>
@@ -486,7 +475,7 @@
       <workItem from="1521873654560" duration="7269000" />
       <workItem from="1521962801243" duration="40898000" />
       <workItem from="1522336598613" duration="5030000" />
-      <workItem from="1522393322191" duration="8168000" />
+      <workItem from="1522393322191" duration="11850000" />
     </task>
     <task id="LOCAL-00001" summary="添加记录父亲节点">
       <created>1522048765340</created>
@@ -530,11 +519,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522334567897</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1.添加元素节点普通名称的获取&#10;2.添加元素节点全局限定名的获取&#10;3.添加元素节点类型的获取">
+      <created>1522424463347</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1522424463348</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61365000" />
+    <option name="totallyTimeSpent" value="65047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -548,7 +544,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43232045" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27071825" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46685082" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -582,11 +578,12 @@
     <MESSAGE value="更新代码结构" />
     <MESSAGE value="完成sirius xml解析存储工作" />
     <MESSAGE value="获取节点下的所有子节点" />
-    <option name="LAST_COMMIT_MESSAGE" value="获取节点下的所有子节点" />
+    <MESSAGE value="1.添加元素节点普通名称的获取&#10;2.添加元素节点全局限定名的获取&#10;3.添加元素节点类型的获取" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.添加元素节点普通名称的获取&#10;2.添加元素节点全局限定名的获取&#10;3.添加元素节点类型的获取" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -651,7 +648,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
-            <element signature="method#getNodes#1;class#loadXmlFile#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -671,7 +667,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
-            <element signature="method#getNodes#1;class#loadXmlFile#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -735,14 +730,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/dom4j/sirius/core/getNodeChildrenTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/DomWrite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-703">
@@ -767,6 +754,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/RegexMatches.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/DomGetter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
@@ -777,33 +772,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/RegexMatches.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/DomWrite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="34" />
+        <state relative-caret-position="238">
+          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
-            <element signature="method#getNodes#1;class#loadXmlFile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="97" column="99" lean-forward="true" selection-start-line="97" selection-start-column="99" selection-end-line="97" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
           </folding>
         </state>
       </provider>
