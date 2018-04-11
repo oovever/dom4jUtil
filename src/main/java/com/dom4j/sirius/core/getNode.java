@@ -69,8 +69,11 @@ public class getNode {
     public static String getSingleNodeName(Map<String, Map<String, String>> elementName,String NodeId) {
         String nodeSingleName = null;
         String nodeType = getNodeType(elementName, NodeId);
-        Map<String, String> typeAndName = elementName.get(NodeId);
-        nodeSingleName = typeAndName.get(nodeType);
+        if(nodeType!=null){
+            Map<String, String> typeAndName = elementName.get(NodeId);
+            nodeSingleName = typeAndName.get(nodeType);
+        }
+
         return nodeSingleName;
     }
 
@@ -101,6 +104,22 @@ public class getNode {
             String globalNodeName = getGlobalNodeName(elementName, key);
             if(globalNodeName!=null)
             res.add(globalNodeName);
+        }
+        return res;
+    }
+
+    /**
+     *  获取模型文件中的所有组件的全局限定名
+     * @param elementName 存储所有编号 类型 名称的hashmap
+     * @return 模型中的所有组件的全局限定名
+     */
+    public static List<String> getAllComponentGlobalName(Map<String, Map<String, String>> elementName) {
+        List<String> res = new ArrayList<>();
+        for (String key : elementName.keySet()) {
+            if (getNodeType(elementName, key)!=null&&getNodeType(elementName, key).equals("architecture:Component")) {
+                String globalName = getGlobalNodeName(elementName, key);
+                res.add(globalName);
+            }
         }
         return res;
     }
