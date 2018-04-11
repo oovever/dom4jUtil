@@ -20,14 +20,18 @@ import static com.dom4j.sirius.util.RegexMatches.regexMatchOwnedElement;
 public class loadXmlFile {
 //    当前编号，类型，名称
     static Map<String, Map<String, String>> elementName = new HashMap<>();
+    ////  父亲节点编号  portOfPackage编号 ownedElement编号
+//    static Map<String,  LinkedHashMap<String, String>> portElement = new HashMap<>();
 //    调用者  调用的类或者接口
     static Map<String, List<String>> callElement = new HashMap<>();
 //    调用者 继承的类
     static Map<String, List<String>> generalizationElement = new HashMap<>();
     //    调用者 实现的接口
     static Map<String, List<String>> realizeElement = new HashMap<>();
+    //    调用者 调用的目标组件
+    static Map<String, Set<String>> dependencyElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
-        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\asmExample\\asmModel.architecture";
+        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\test.architecture";
         getNodes(file);
         for (String key : elementName.keySet()) {
             System.out.print("当前节点"+key+"------");
@@ -35,16 +39,19 @@ public class loadXmlFile {
                 System.out.println("类型"+key2+"-------------"+"名称"+elementName.get(key).get(key2));
             }
         }
-        System.out.println("-----------call Element-------------");
-        System.out.println(callElement);
-        System.out.println("-----------all GlobalName-------------");
-        System.out.println(getNode.getGlobalNodeAllName(elementName));
-        System.out.println("-----------all ComponentName-------------");
-        System.out.println(getNode.getAllComponentGlobalName(elementName));
+//        System.out.println("-----------call Element-------------");
+//        System.out.println(callElement);
+//        System.out.println("-----------all GlobalName-------------");
+//        System.out.println(getNode.getGlobalNodeAllName(elementName));
+//        System.out.println("-----------all ComponentName-------------");
+//        System.out.println(getNode.getAllComponentGlobalName(elementName));
+        System.out.println("-----------all dependency-------------");
+        System.out.println(dependencyElement);
 //        System.out.println("------------get Children-------------");
 //        System.out.println(getNode.getNodeChildren(elementName,"0.2.0"));
 //        System.out.println("------------get GlobalName-------------");
 //        System.out.println(getNode.getGlobalNodeName(elementName,"0.2.0.0"));
+//        System.out.println(getNode.getComponentDependency("Component1",dependencyElement));
     }
 
     /**
@@ -76,6 +83,27 @@ public class loadXmlFile {
         log.info("当前节点的内容："+node.getTextTrim());//当前节点名称
         List<Attribute> listAttr =node.attributes();//当前节点的所有属性的list
         log.info("第"+current+"个");
+//        如果当前节点的类型是portOfPackage
+//        if (node.getName() != null && node.getName().equals("portOfPackage")) {
+////           端口节点的父节点
+//            String father = current.substring(0, current.lastIndexOf("."));
+//            if (portElement.get(father) == null) {
+//                portElement.put(father, new LinkedHashMap<String, String>());
+//                portElement.get(father).put(father + ".0", current);
+//            } else {
+////                是当前组件或类下的第几个端口
+//                int currentPortNum=0;
+//                LinkedHashMap<String,String> portAndCurrent =portElement.get(father);
+//                Iterator<String> iterator = portAndCurrent.keySet().iterator();
+//                String tail=null;
+//                while (iterator.hasNext()) {
+//                    tail = iterator.next();
+//                }
+//                currentPortNum = Integer.valueOf(tail.substring(tail.lastIndexOf(".")+1)) + 1;
+//                portAndCurrent.put(father + currentPortNum, current);
+//                portElement.put(father, portAndCurrent);
+//            }
+//        }
         if (!elementName.containsKey(current)) {
             elementName.put(current, new HashMap<>());
         }
@@ -95,8 +123,9 @@ public class loadXmlFile {
                 value = regexMatchOwnedElement(value, Constant.ownedElement);
                 value = regexMatchOwnedElement(value, Constant.portOfPackage);
                 value = regexMatchOwnedElement(value,Constant.symbol);
+//                可能有多种关系，多种关系的数组
                 String[] valueArr = value.split(" ");
-                if (name.equals("association")||name.equals("dependence")) {
+                if (name.equals("association")) {
 
                     if (callElement.get(current) == null) {
                         callElement.put(current, new ArrayList<String>());
@@ -125,6 +154,17 @@ public class loadXmlFile {
                     for (int i = 0; i < valueArr.length; i++) {
                         valueArr[i] = "0" + valueArr[i];
                         realizeElement.get(current).add(valueArr[i]);
+                    }
+                } else if (name.equals("dependence")) {
+                    log.info("-------dependency read----------");
+//                    当前端口所属组件
+                    String portOfComponent = current.substring(0,current.lastIndexOf("."));
+                    if (dependencyElement.get(portOfComponent) == null) {
+                        dependencyElement.put(portOfComponent, new HashSet<>());
+                    }
+                    for (int i = 0; i < valueArr.length; i++) {
+                        valueArr[i] = "0" + valueArr[i];
+                        dependencyElement.get(portOfComponent).add(valueArr[i].substring(0,valueArr[i].lastIndexOf(".")));
                     }
                 }
             }
