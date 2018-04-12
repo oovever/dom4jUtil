@@ -118,17 +118,33 @@ public class getNode {
      * 获取模型文件中的所有组件的全局限定名
      *
      * @param elementName 存储所有编号 类型 名称的hashmap
-     * @return 模型中的所有组件的全局限定名
+     * @param type 模型元素类型
+     * @return 模型中的相应类型元素的全局限定名
      */
-    public static List<String> getAllComponentGlobalName(Map<String, Map<String, String>> elementName) {
+    public static List<String> getAllGlobalName(Map<String, Map<String, String>> elementName,String type) {
         List<String> res = new ArrayList<>();
         for (String key : elementName.keySet()) {
-            if (getNodeType(elementName, key) != null && getNodeType(elementName, key).equals("architecture:Component")) {
+            if (getNodeType(elementName, key) != null && getNodeType(elementName, key).equals(type)) {
                 String globalName = getGlobalNodeName(elementName, key);
                 res.add(globalName);
             }
         }
         return res;
+    }
+
+    /**
+     *
+     * @return 所有组件的全局限定名
+     */
+    public static List<String> getAllComponentGlobalName(){
+        return getAllGlobalName(loadXmlFile.elementName, "architecture:Component");
+    }
+    /**
+     *
+     * @return 所有系统的全局限定名
+     */
+    public static List<String> getAllSystemGlobalName(){
+        return getAllGlobalName(loadXmlFile.elementName, "architecture:System");
     }
 
     /**

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ee1f935-0680-4bea-b35f-2097cddcf7ed" name="Default" comment="1.完成读取&#10;2.修复组件嵌套超过10个时的异常">
+    <list default="true" id="7ee1f935-0680-4bea-b35f-2097cddcf7ed" name="Default" comment="1.完成获取全局限定名与NodeId的映射&#10;2.获取选取组件的所有依赖关系&#10;3.代码写的很垃圾 急需重构">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,8 +25,8 @@
       <file leaf-file-name="loadXmlFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+            <state relative-caret-position="3069">
+              <caret line="173" column="54" lean-forward="false" selection-start-line="173" selection-start-column="54" selection-end-line="173" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="getNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="136" column="30" lean-forward="false" selection-start-line="136" selection-start-column="30" selection-end-line="136" selection-end-column="30" />
+            <state relative-caret-position="558">
+              <caret line="146" column="80" lean-forward="true" selection-start-line="146" selection-start-column="80" selection-end-line="146" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
@@ -479,7 +478,7 @@
       <workItem from="1521962801243" duration="40898000" />
       <workItem from="1522336598613" duration="5030000" />
       <workItem from="1522393322191" duration="14340000" />
-      <workItem from="1523428441100" duration="13300000" />
+      <workItem from="1523428441100" duration="15086000" />
     </task>
     <task id="LOCAL-00001" summary="添加记录父亲节点">
       <created>1522048765340</created>
@@ -544,11 +543,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523430347956</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1.完成获取全局限定名与NodeId的映射&#10;2.获取选取组件的所有依赖关系&#10;3.代码写的很垃圾 急需重构">
+      <created>1523464089683</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1523464089683</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80837000" />
+    <option name="totallyTimeSpent" value="82623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -599,7 +605,8 @@
     <MESSAGE value="1.添加元素节点普通名称的获取&#10;2.添加元素节点全局限定名的获取&#10;3.添加元素节点类型的获取" />
     <MESSAGE value="1.添加获取元素节点的所有全局限定名" />
     <MESSAGE value="1.完成读取模型中所有组件操作&#10;2.修复组件嵌套超过10个时的异常" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.完成读取模型中所有组件操作&#10;2.修复组件嵌套超过10个时的异常" />
+    <MESSAGE value="1.完成获取全局限定名与NodeId的映射&#10;2.获取选取组件的所有依赖关系&#10;3.代码写的很垃圾 急需重构" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.完成获取全局限定名与NodeId的映射&#10;2.获取选取组件的所有依赖关系&#10;3.代码写的很垃圾 急需重构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -835,8 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+        <state relative-caret-position="3069">
+          <caret line="173" column="54" lean-forward="false" selection-start-line="173" selection-start-column="54" selection-end-line="173" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodes#0;class#loadXmlFile#0" expanded="false" />
@@ -846,8 +853,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="136" column="30" lean-forward="false" selection-start-line="136" selection-start-column="30" selection-end-line="136" selection-end-column="30" />
+        <state relative-caret-position="558">
+          <caret line="146" column="80" lean-forward="true" selection-start-line="146" selection-start-column="80" selection-end-line="146" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
