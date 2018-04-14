@@ -2,6 +2,7 @@ package com.dom4j.sirius.core;
 
 
 import com.dom4j.sirius.Common.Constant;
+import com.sun.org.apache.xml.internal.security.Init;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.*;
 import org.dom4j.io.SAXReader;
@@ -30,8 +31,14 @@ public class loadXmlFile {
     static Map<String, List<String>> realizeElement = new HashMap<>();
     //    调用者 调用的目标组件
     static Map<String, Set<String>> dependencyElement = new HashMap<>();
+    //源端口 目标端口
+    static Map<String, List<String>> portDependency = new HashMap<>();
+    //父亲节点 当前端口是该节点下的第几个端口
+    static Map<String, Integer> portNumOfFather = new HashMap<>();
+    // 端口的编号 在实际组件/系统中的编号
+    static Map<String, String> portAndOwnedElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
-        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\test.architecture";
+        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\example.architecture";
         getNodes(file);
         for (String key : elementName.keySet()) {
             System.out.print("当前节点"+key+"------");
@@ -52,6 +59,10 @@ public class loadXmlFile {
 //        System.out.println("------------get GlobalName-------------");
 //        System.out.println(getNode.getGlobalNodeName(elementName,"0.2.0.0"));
 //        System.out.println(getNode.getComponentDependency("Component1",dependencyElement));
+        System.out.println("-----------portDependency-------------");
+        System.out.println(portDependency);
+        System.out.println("-----------portAndOwnedElement-------------");
+        System.out.println(portAndOwnedElement);
     }
 
     /**
@@ -68,6 +79,7 @@ public class loadXmlFile {
             log.error("无法读取文件",e);
         }
         org.dom4j.Element root     =document.getRootElement();//获取根节点
+        initRead(root, "0");
         getNodes(root,"0");//从根节点开始遍历所有节点
     }
     /**
@@ -83,27 +95,7 @@ public class loadXmlFile {
         log.info("当前节点的内容："+node.getTextTrim());//当前节点名称
         List<Attribute> listAttr =node.attributes();//当前节点的所有属性的list
         log.info("第"+current+"个");
-//        如果当前节点的类型是portOfPackage
-//        if (node.getName() != null && node.getName().equals("portOfPackage")) {
-////           端口节点的父节点
-//            String father = current.substring(0, current.lastIndexOf("."));
-//            if (portElement.get(father) == null) {
-//                portElement.put(father, new LinkedHashMap<String, String>());
-//                portElement.get(father).put(father + ".0", current);
-//            } else {
-////                是当前组件或类下的第几个端口
-//                int currentPortNum=0;
-//                LinkedHashMap<String,String> portAndCurrent =portElement.get(father);
-//                Iterator<String> iterator = portAndCurrent.keySet().iterator();
-//                String tail=null;
-//                while (iterator.hasNext()) {
-//                    tail = iterator.next();
-//                }
-//                currentPortNum = Integer.valueOf(tail.substring(tail.lastIndexOf(".")+1)) + 1;
-//                portAndCurrent.put(father + currentPortNum, current);
-//                portElement.put(father, portAndCurrent);
-//            }
-//        }
+
         if (!elementName.containsKey(current)) {
             elementName.put(current, new HashMap<>());
         }
@@ -162,9 +154,13 @@ public class loadXmlFile {
                     if (dependencyElement.get(portOfComponent) == null) {
                         dependencyElement.put(portOfComponent, new HashSet<>());
                     }
+                    if (portDependency.get(current) == null) {
+                        portDependency.put(current, new ArrayList<>());
+                    }
                     for (int i = 0; i < valueArr.length; i++) {
                         valueArr[i] = "0" + valueArr[i];
                         dependencyElement.get(portOfComponent).add(valueArr[i].substring(0,valueArr[i].lastIndexOf(".")));
+                        portDependency.get(current).add(portAndOwnedElement.get(valueArr[i]));
                     }
                 }
             }
@@ -178,6 +174,24 @@ public class loadXmlFile {
             current = current.substring(0,current.lastIndexOf("."));
         }
     }
+    private static   void initRead(org.dom4j.Element node, String current){
+        //        如果当前节点的类型是portOfPackage
+        if (node.getName() != null && node.getName().equals("portOfPackage")) {
+//           端口节点的父节点
+            String father = current.substring(0, current.lastIndexOf("."));
+            int    num    = portNumOfFather.getOrDefault(father, -1);
+            num += 1;
+            portAndOwnedElement.put(father + "." + num, current);
+            portNumOfFather.put(father, num);
+        }
+//            ----------------------------------------------------------
+            List<org.dom4j.Element> listElement =node.elements();//所有一级子节点的list
+            for(int i=0;i<listElement.size();i++){
+                current=current+"."+String.valueOf(i);
+                initRead(listElement.get(i),current);//递归
+                current = current.substring(0,current.lastIndexOf("."));
+            }
 
+    }
 
 }

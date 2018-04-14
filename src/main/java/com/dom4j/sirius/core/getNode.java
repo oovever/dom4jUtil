@@ -3,8 +3,6 @@ package com.dom4j.sirius.core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
-import javax.xml.soap.Node;
 import java.util.*;
 
 
@@ -191,6 +189,9 @@ public class getNode {
         }
         res.put(source, target);
         return res;
+    }
+    public static Map<String,List<String>> getRelationBasePort(){
+        return new HashMap<>();
     }
 
 }
