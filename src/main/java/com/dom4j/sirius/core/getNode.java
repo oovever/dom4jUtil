@@ -190,8 +190,33 @@ public class getNode {
         res.put(source, target);
         return res;
     }
-    public static Map<String,List<String>> getRelationBasePort(){
-        return new HashMap<>();
+
+    /**
+     * 获取不同包下类的关联关系
+     * @param portDependency 端口间的依赖关系
+     * @param classRequiredElement 类请求端口的消息
+     * @param portRequiredElement 端口请求类的消息
+     * @param elementName elementName 存储所有编号 类型 名称的hashmap
+     * @return 获取不同包下类的关联关系
+     */
+    public static Map<String,Set<String>> getRequiredOfClass( Map<String, Set<String>> portDependency,Map<String, Set<String>> classRequiredElement,Map<String, Set<String>> portRequiredElement,Map<String, Map<String, String>> elementName){
+        Map<String, Set<String>> dependencyClass = new HashMap<>();
+        for (String key : classRequiredElement.keySet()) {
+            String globalSourceClassName = getGlobalNodeName(elementName, key);
+            if (dependencyClass.get(globalSourceClassName) == null) {
+                dependencyClass.put(globalSourceClassName, new HashSet<>());
+            }
+            for (String port : classRequiredElement.get(key)) {
+                for (String targetPort : portDependency.get(port)) {
+                    for (String targetClass : portRequiredElement.get(targetPort)) {
+                        String globalTargetClassName = getGlobalNodeName(elementName, targetClass);
+                        dependencyClass.get(globalSourceClassName).add(globalTargetClassName);
+                    }
+                }
+            }
+
+        }
+        return dependencyClass;
     }
 
 }

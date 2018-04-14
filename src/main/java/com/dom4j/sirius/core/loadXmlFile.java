@@ -32,11 +32,15 @@ public class loadXmlFile {
     //    调用者 调用的目标组件
     static Map<String, Set<String>> dependencyElement = new HashMap<>();
     //源端口 目标端口
-    static Map<String, List<String>> portDependency = new HashMap<>();
+    static Map<String, Set<String>> portDependency = new HashMap<>();
     //父亲节点 当前端口是该节点下的第几个端口
     static Map<String, Integer> portNumOfFather = new HashMap<>();
     // 端口的编号 在实际组件/系统中的编号
     static Map<String, String> portAndOwnedElement = new HashMap<>();
+//   起始编号 目标编号
+    static Map<String, Set<String>> classRequiredElement = new HashMap<>();
+    //   起始编号 目标编号
+    static Map<String, Set<String>> portRequiredElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
         String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\example.architecture";
         getNodes(file);
@@ -50,10 +54,8 @@ public class loadXmlFile {
 //        System.out.println(callElement);
 //        System.out.println("-----------all GlobalName-------------");
 //        System.out.println(getNode.getGlobalNodeAllName(elementName));
-//        System.out.println("-----------all ComponentName-------------");
-//        System.out.println(getNode.getAllComponentGlobalName(elementName));
-        System.out.println("-----------all dependency-------------");
-        System.out.println(dependencyElement);
+//        System.out.println("-----------all dependency-------------");
+//        System.out.println(dependencyElement);
 //        System.out.println("------------get Children-------------");
 //        System.out.println(getNode.getNodeChildren(elementName,"0.2.0"));
 //        System.out.println("------------get GlobalName-------------");
@@ -63,6 +65,13 @@ public class loadXmlFile {
         System.out.println(portDependency);
         System.out.println("-----------portAndOwnedElement-------------");
         System.out.println(portAndOwnedElement);
+        System.out.println("-----------classRequiredElement-------------");
+        System.out.println(classRequiredElement);
+        System.out.println("-----------portRequiredElement-------------");
+        System.out.println(portRequiredElement);
+        System.out.println("-----------classAssociation-------------");
+        System.out.println(getNode.getRequiredOfClass(portDependency, classRequiredElement, portRequiredElement, elementName));
+
     }
 
     /**
@@ -118,35 +127,16 @@ public class loadXmlFile {
 //                可能有多种关系，多种关系的数组
                 String[] valueArr = value.split(" ");
                 if (name.equals("association")) {
-
-                    if (callElement.get(current) == null) {
-                        callElement.put(current, new ArrayList<String>());
-                    }
                     log.info("-------association read----------");
-                    for (int i = 0; i < valueArr.length; i++) {
-                        valueArr[i] = "0" + valueArr[i];
-                        callElement.get(current).add(valueArr[i]);
-                    }
+                    addRelation(callElement,valueArr,current);
 
                 } else if (name.equals("generalization")) {
                     log.info("-------generalization read----------");
-                    if (generalizationElement.get(current) == null) {
-                        generalizationElement.put(current, new ArrayList<String>());
-                    }
-                    for (int i = 0; i < valueArr.length; i++) {
-                        valueArr[i] = "0" + valueArr[i];
-                        generalizationElement.get(current).add(valueArr[i]);
-                    }
+                    addRelation(generalizationElement, valueArr, current);
 
                 }else if (name.equals("realize")) {
                     log.info("-------realize read----------");
-                    if (realizeElement.get(current) == null) {
-                        realizeElement.put(current, new ArrayList<String>());
-                    }
-                    for (int i = 0; i < valueArr.length; i++) {
-                        valueArr[i] = "0" + valueArr[i];
-                        realizeElement.get(current).add(valueArr[i]);
-                    }
+                    addRelation(realizeElement, valueArr, current);
                 } else if (name.equals("dependence")) {
                     log.info("-------dependency read----------");
 //                    当前端口所属组件
@@ -155,12 +145,30 @@ public class loadXmlFile {
                         dependencyElement.put(portOfComponent, new HashSet<>());
                     }
                     if (portDependency.get(current) == null) {
-                        portDependency.put(current, new ArrayList<>());
+                        portDependency.put(current, new HashSet<>());
                     }
                     for (int i = 0; i < valueArr.length; i++) {
                         valueArr[i] = "0" + valueArr[i];
                         dependencyElement.get(portOfComponent).add(valueArr[i].substring(0,valueArr[i].lastIndexOf(".")));
                         portDependency.get(current).add(portAndOwnedElement.get(valueArr[i]));
+                    }
+                }else if (name.equals("required")) {
+                    log.info("-------required read----------");
+                    boolean sourceIsPort = node.getName().equals("portOfPackage") ? true : false;
+                    for (int i = 0; i < valueArr.length; i++) {
+                        valueArr[i] = "0" + valueArr[i];
+                        if (sourceIsPort) {
+                            if (portRequiredElement.get(current) == null) {
+                                portRequiredElement.put(current, new HashSet<>());
+                            }
+                            portRequiredElement.get(current).add(valueArr[i]);
+                        } else {
+                            if (classRequiredElement.get(current) == null) {
+                                classRequiredElement.put(current, new HashSet<>());
+                            }
+                            classRequiredElement.get(current).add(portAndOwnedElement.get(valueArr[i]));
+                        }
+
                     }
                 }
             }
@@ -198,6 +206,13 @@ public class loadXmlFile {
                 current = current.substring(0,current.lastIndexOf("."));
             }
 
+    }
+    private static void addRelation(Map<String, List<String>> map, String[] valueArr,String current){
+        map.computeIfAbsent(current, t -> new ArrayList<>());
+        for (int i = 0; i < valueArr.length; i++) {
+            valueArr[i] = "0" + valueArr[i];
+            map.get(current).add(valueArr[i]);
+        }
     }
 
 }

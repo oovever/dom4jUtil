@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee1f935-0680-4bea-b35f-2097cddcf7ed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +26,8 @@
       <file leaf-file-name="loadXmlFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="180" column="30" lean-forward="false" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+            <state relative-caret-position="-2607">
+              <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,26 +35,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/Common/Constant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="getNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6072">
-              <caret line="191" column="5" lean-forward="false" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
+            <state relative-caret-position="129">
+              <caret line="204" column="23" lean-forward="true" selection-start-line="204" selection-start-column="23" selection-end-line="204" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-                <element signature="e#6310#6311#0" expanded="true" />
-                <element signature="e#6348#6349#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,6 +67,7 @@
       <find>getNode</find>
       <find>port</find>
       <find>Port</find>
+      <find>valueArr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,8 +94,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNodeChildren.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/Pair.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/CommonUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
       </list>
     </option>
   </component>
@@ -468,7 +458,7 @@
       <workItem from="1522336598613" duration="5030000" />
       <workItem from="1522393322191" duration="14340000" />
       <workItem from="1523428441100" duration="15581000" />
-      <workItem from="1523502165615" duration="11117000" />
+      <workItem from="1523502165615" duration="23748000" />
     </task>
     <task id="LOCAL-00001" summary="添加记录父亲节点">
       <created>1522048765340</created>
@@ -554,11 +544,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523696761260</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="更新注释说明">
+      <created>1523697069016</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1523697069016</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94235000" />
+    <option name="totallyTimeSpent" value="106866000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -576,7 +573,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26647565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26647565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872927" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -612,11 +609,12 @@
     <MESSAGE value="1.完成获取全局限定名与NodeId的映射&#10;2.获取选取组件的所有依赖关系&#10;3.代码写的很垃圾 急需重构" />
     <MESSAGE value="完成获取组件与系统所有的全局限定名" />
     <MESSAGE value="完成获取端口的依赖关系" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成获取端口的依赖关系" />
+    <MESSAGE value="更新注释说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新注释说明" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="63" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -656,8 +654,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6348#6349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,8 +675,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6348#6349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,8 +712,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6348#6349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -786,8 +778,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6348#6349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -866,14 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/Common/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_31/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
@@ -883,23 +865,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/CommonUtil.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/Common/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6072">
-          <caret line="191" column="5" lean-forward="false" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
+        <state relative-caret-position="129">
+          <caret line="204" column="23" lean-forward="true" selection-start-line="204" selection-start-column="23" selection-end-line="204" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getNodeChildren#0;class#getNode#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6348#6349#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="180" column="30" lean-forward="false" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+        <state relative-caret-position="-2607">
+          <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
