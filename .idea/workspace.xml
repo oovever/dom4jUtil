@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee1f935-0680-4bea-b35f-2097cddcf7ed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" afterPath="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +25,8 @@
       <file leaf-file-name="loadXmlFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2607">
-              <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
+            <state relative-caret-position="527">
+              <caret line="214" column="26" lean-forward="false" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,8 +93,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNodeChildren.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/Pair.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/util/CommonUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/getNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java" />
       </list>
     </option>
   </component>
@@ -458,7 +457,7 @@
       <workItem from="1522336598613" duration="5030000" />
       <workItem from="1522393322191" duration="14340000" />
       <workItem from="1523428441100" duration="15581000" />
-      <workItem from="1523502165615" duration="23748000" />
+      <workItem from="1523502165615" duration="23968000" />
     </task>
     <task id="LOCAL-00001" summary="添加记录父亲节点">
       <created>1522048765340</created>
@@ -551,11 +550,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523697069016</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="完成不同包之间类通过端口获取关联关系">
+      <created>1523718465924</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1523718465924</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106866000" />
+    <option name="totallyTimeSpent" value="107086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -610,7 +616,8 @@
     <MESSAGE value="完成获取组件与系统所有的全局限定名" />
     <MESSAGE value="完成获取端口的依赖关系" />
     <MESSAGE value="更新注释说明" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新注释说明" />
+    <MESSAGE value="完成不同包之间类通过端口获取关联关系" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成不同包之间类通过端口获取关联关系" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -886,8 +893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dom4j/sirius/core/loadXmlFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2607">
-          <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
+        <state relative-caret-position="527">
+          <caret line="214" column="26" lean-forward="false" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

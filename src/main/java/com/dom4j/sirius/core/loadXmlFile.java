@@ -207,6 +207,13 @@ public class loadXmlFile {
             }
 
     }
+
+    /**
+     * 添加节点间的关系
+     * @param map 要添加的Map集合
+     * @param valueArr 关系数组
+     * @param current 当前节点
+     */
     private static void addRelation(Map<String, List<String>> map, String[] valueArr,String current){
         map.computeIfAbsent(current, t -> new ArrayList<>());
         for (int i = 0; i < valueArr.length; i++) {
