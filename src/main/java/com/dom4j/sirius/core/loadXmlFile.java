@@ -174,6 +174,12 @@ public class loadXmlFile {
             current = current.substring(0,current.lastIndexOf("."));
         }
     }
+
+    /**
+     * 初始化读取，获取所有port信息
+     * @param node 节点
+     * @param current 当前读取到的节点
+     */
     private static   void initRead(org.dom4j.Element node, String current){
         //        如果当前节点的类型是portOfPackage
         if (node.getName() != null && node.getName().equals("portOfPackage")) {
