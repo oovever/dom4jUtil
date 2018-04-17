@@ -219,4 +219,57 @@ public class getNode {
         return dependencyClass;
     }
 
+    /**
+     * 返回一个节点的所有孩子节点ID
+     * @param fatherId 父亲节点编号
+     * @param elementName elementName 存储所有编号 类型 名称的hashmap
+     * @return 返回所有孩子节点ID
+     */
+    public static List<String> getNodeChildrenId(String fatherId,  Map<String, Map<String, String>> elementName) {
+        List<String> childrens = new ArrayList<>();
+        int index=0;
+        while (true) {
+            String children = fatherId + "." + index++;
+            if (elementName.containsKey(children)) {
+                childrens.add(children);
+            } else {
+                break;
+            }
+        }
+        return childrens;
+    }
+    /**
+     * 返回一个节点的所有孩子节点Name
+     * @param fatherId 父亲节点编号
+     * @param elementName elementName 存储所有编号 类型 名称的hashmap
+     * @return 返回所有孩子节点Name
+     */
+    public static List<String> getNodeChildrenName(String fatherId, Map<String, Map<String, String>> elementName) {
+        List<String> childrens = new ArrayList<>();
+        int index=0;
+        while (true) {
+            String children = fatherId + "." + index++;
+            if (elementName.containsKey(children)) {
+                for (String key : elementName.get(children).keySet()) {
+                    childrens.add(elementName.get(children).get(key));
+
+                }
+            } else {
+                break;
+            }
+        }
+        return childrens;
+    }
+//    public static Map<Set<String>,Set<String>> getRelatedCompsAndSysOfClass(String selectElement,Map<String, Set<String>> classRequiredElement,Map<String, Set<String>> portRequiredElement){
+//        Map<Set<String>, Set<String>> RelatedCompsAndSysOfClass = new HashMap<>();
+//        Set<String> source = new HashSet<>();
+//        Set<String> target = new HashSet<>();
+////        全局限定名 编号的map
+//        Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
+////        获取相应全局限定名的编号
+//        selectElement = NodeId2globalName.get(selectElement);
+//        RelatedCompsAndSysOfClass.put(source, target);
+//        return new HashMap<>();
+//    }
+
 }

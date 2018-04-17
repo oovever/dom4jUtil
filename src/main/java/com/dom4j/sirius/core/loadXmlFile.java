@@ -2,7 +2,6 @@ package com.dom4j.sirius.core;
 
 
 import com.dom4j.sirius.Common.Constant;
-import com.sun.org.apache.xml.internal.security.Init;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.*;
 import org.dom4j.io.SAXReader;
@@ -42,7 +41,7 @@ public class loadXmlFile {
     //   起始编号 目标编号
     static Map<String, Set<String>> portRequiredElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
-        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\org.eclipse.sirius.architecture.sample\\example.architecture";
+        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\asmNew\\asm.architecture";
         getNodes(file);
         for (String key : elementName.keySet()) {
             System.out.print("当前节点"+key+"------");
