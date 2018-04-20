@@ -16,5 +16,11 @@ public class Constant {
     public static final String portOfPackage = "@portOfPackage";
     //    过滤/
     public static final String symbol = "/";
+//    组件类型
+    public static final String Component = "architecture:Component";
+    //    系统类型
+    public static final String System = "architecture:System";
+//    类类型
+    public static final String ClassName = "architecture:Class";
 
 }

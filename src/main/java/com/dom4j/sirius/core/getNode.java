@@ -1,5 +1,7 @@
 package com.dom4j.sirius.core;
 
+import com.dom4j.sirius.Common.Constant;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +15,10 @@ import java.util.*;
  */
 public class getNode {
     Logger logger = LoggerFactory.getLogger(getNode.class);
-
+//元素下的子系统与子组件
+    private static Set<String> childrenComponentAndSystemId = new HashSet<>();
+//    元素下的子类
+    private static Set<String> childrenClass= new HashSet<>();
 
     /**
      * @param elementName 存储所有编号 类型 名称的hashmap
@@ -225,13 +230,23 @@ public class getNode {
      * @param elementName elementName 存储所有编号 类型 名称的hashmap
      * @return 返回所有孩子节点ID
      */
-    public static List<String> getNodeChildrenId(String fatherId,  Map<String, Map<String, String>> elementName) {
-        List<String> childrens = new ArrayList<>();
+    public static Set<String> getNodeChildrenId(String fatherId,  Map<String, Map<String, String>> elementName) {
+        Set<String> childrens = new HashSet<>();
         int index=0;
         while (true) {
             String children = fatherId + "." + index++;
             if (elementName.containsKey(children)) {
                 childrens.add(children);
+                for (String key : elementName.get(children).keySet()) {
+//                    获取包下的子组件与子系统
+                    if (key.equals(Constant.Component) || key.equals(Constant.System)) {
+                        childrenComponentAndSystemId.add(children);
+                    }
+//                    获取包下的类类型
+                    else if (key.equals(Constant.ClassName)) {
+                        childrenClass.add(children);
+                    }
+                }
             } else {
                 break;
             }
@@ -244,8 +259,8 @@ public class getNode {
      * @param elementName elementName 存储所有编号 类型 名称的hashmap
      * @return 返回所有孩子节点Name
      */
-    public static List<String> getNodeChildrenName(String fatherId, Map<String, Map<String, String>> elementName) {
-        List<String> childrens = new ArrayList<>();
+    public static Set<String> getNodeChildrenName(String fatherId, Map<String, Map<String, String>> elementName) {
+        Set<String> childrens = new HashSet<>();
         int index=0;
         while (true) {
             String children = fatherId + "." + index++;
@@ -260,16 +275,82 @@ public class getNode {
         }
         return childrens;
     }
-//    public static Map<Set<String>,Set<String>> getRelatedCompsAndSysOfClass(String selectElement,Map<String, Set<String>> classRequiredElement,Map<String, Set<String>> portRequiredElement){
-//        Map<Set<String>, Set<String>> RelatedCompsAndSysOfClass = new HashMap<>();
-//        Set<String> source = new HashSet<>();
-//        Set<String> target = new HashSet<>();
-////        全局限定名 编号的map
-//        Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
-////        获取相应全局限定名的编号
-//        selectElement = NodeId2globalName.get(selectElement);
-//        RelatedCompsAndSysOfClass.put(source, target);
-//        return new HashMap<>();
-//    }
+
+    /**
+     * 获取包内组件（系统）的依赖关系
+     * @param selectElement 所选组件
+     * @param fatherName 父包名称
+     * @return 组件与组件的关系
+     */
+    public static Map<Set<String>,Set<String>>getRelatedCompsAndSysOfComp(String selectElement,String fatherName){
+        Map<Set<String>, Set<String>> RelatedCompsAndSysOfClass = new HashMap<>();
+        Set<String> source = new HashSet<>();
+        Set<String> target = new HashSet<>();
+//        全局限定名 编号的map
+        Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
+//        获取相应全局限定名的编号
+        selectElement = NodeId2globalName.get(selectElement);
+        String fatherId = NodeId2globalName.get(fatherName);
+        Set<String> childrens = getNodeChildrenId(fatherId,loadXmlFile.elementName);
+//        ------------------处理组件-------------------
+        Map<Set<String>, Set<String>> componentDependency = getComponentDependency(selectElement, loadXmlFile.dependencyElement);
+        for (Set<String> key : componentDependency.keySet()) {
+            for (String childrenElement : key) {
+                if (childrens.contains(childrenElement)) {
+                    source.add(childrenElement);
+                }
+            }
+            for (String childrenElement : componentDependency.get(key)) {
+                if (childrens.contains(childrenElement)) {
+                    target.add(childrenElement);
+                }
+            }
+            }
+
+        RelatedCompsAndSysOfClass.put(source, target);
+//---------------------------------------------
+        return RelatedCompsAndSysOfClass;
+    }
+
+    /**
+     *
+     * @param selectElement 选择的组件
+     * @param fatherName 父元素
+     * @param classRequiredElement class请求的端口map
+     * @param portRequiredElement port请求的类map
+     * @return 组件与类的关系
+     */
+    public static Map<Set<String>,Set<String>> getRelatedClassesOfComp(String selectElement,String fatherName,Map<String, Set<String>> classRequiredElement,Map<String, Set<String>> portRequiredElement) {
+        Map<Set<String>, Set<String>> relatedClassesOfComp = new HashMap<>();
+        Set<String> source = new HashSet<>();
+        Set<String> target = new HashSet<>();
+        //        全局限定名 编号的map
+        Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
+//        获取相应全局限定名的编号
+        selectElement = NodeId2globalName.get(selectElement);
+        String fatherId = NodeId2globalName.get(fatherName);
+        Set<String> childrens = getNodeChildrenId(fatherId,loadXmlFile.elementName);
+        for (String key : portRequiredElement.keySet()) {
+            if (key.substring(0,key.lastIndexOf(".")).equals(selectElement)) {
+                for (String children : portRequiredElement.get(key)) {
+                    if (childrens.contains(children)) {
+                        target.add(children);
+                    }
+                }
+            }
+
+        }
+        for (String key : classRequiredElement.keySet()) {
+            if (childrens.contains(key)) {
+                for (String port : classRequiredElement.get(key)) {
+                    if (port.substring(0, port.lastIndexOf(".")).equals(selectElement)) {
+                        source.add(key);
+                        break;
+                    }
+                }
+            }
+        }
+        return relatedClassesOfComp;
+    }
 
 }
