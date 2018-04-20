@@ -278,30 +278,30 @@ public class getNode {
 
     /**
      * 获取包内组件（系统）的依赖关系
-     * @param selectElement 所选组件
+     * @param selectElementId 所选组件
      * @param fatherName 父包名称
      * @return 组件与组件的关系
      */
-    public static Map<Set<String>,Set<String>>getRelatedCompsAndSysOfComp(String selectElement,String fatherName){
+    public static Map<Set<String>,Set<String>>getRelatedCompsAndSysOfComp(String selectElementId,String fatherName){
         Map<Set<String>, Set<String>> RelatedCompsAndSysOfClass = new HashMap<>();
         Set<String> source = new HashSet<>();
         Set<String> target = new HashSet<>();
 //        全局限定名 编号的map
         Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
 //        获取相应全局限定名的编号
-        selectElement = NodeId2globalName.get(selectElement);
+         String  selectElement = NodeId2globalName.get(selectElementId);
         String fatherId = NodeId2globalName.get(fatherName);
         Set<String> childrens = getNodeChildrenId(fatherId,loadXmlFile.elementName);
 //        ------------------处理组件-------------------
-        Map<Set<String>, Set<String>> componentDependency = getComponentDependency(selectElement, loadXmlFile.dependencyElement);
+        Map<Set<String>, Set<String>> componentDependency = getComponentDependency(selectElementId, loadXmlFile.dependencyElement);
         for (Set<String> key : componentDependency.keySet()) {
             for (String childrenElement : key) {
-                if (childrens.contains(childrenElement)) {
+                if (childrens.contains(NodeId2globalName.get(childrenElement))) {
                     source.add(childrenElement);
                 }
             }
             for (String childrenElement : componentDependency.get(key)) {
-                if (childrens.contains(childrenElement)) {
+                if (childrens.contains(NodeId2globalName.get(childrenElement))) {
                     target.add(childrenElement);
                 }
             }

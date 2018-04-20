@@ -41,7 +41,7 @@ public class loadXmlFile {
     //   起始编号 目标编号
     static Map<String, Set<String>> portRequiredElement = new HashMap<>();
     public static void main(String[] args) throws DocumentException {
-        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\asmNew\\asm.architecture";
+        String file = "E:\\git库\\华为项目\\architectureDesigner\\design\\test\\test.architecture";
         getNodes(file);
         for (String key : elementName.keySet()) {
             System.out.print("当前节点"+key+"------");
@@ -70,7 +70,10 @@ public class loadXmlFile {
         System.out.println(portRequiredElement);
         System.out.println("-----------classAssociation-------------");
         System.out.println(getNode.getRequiredOfClass(portDependency, classRequiredElement, portRequiredElement, elementName));
-
+        System.out.println("-----------RelatedClassesOfComp-------------");
+        System.out.println(getNode.getRelatedCompsAndSysOfComp("System.Component1","System"));
+//        System.out.println("-----------getRelatedClassesOfComp-------------");
+//        System.out.println(getNode.getRelatedClassesOfComp());
     }
 
     /**
