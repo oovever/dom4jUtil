@@ -72,8 +72,10 @@ public class loadXmlFile {
         System.out.println(getNode.getRequiredOfClass(portDependency, classRequiredElement, portRequiredElement, elementName));
         System.out.println("-----------RelatedClassesOfComp-------------");
         System.out.println(getNode.getRelatedCompsAndSysOfComp("System.Component1","System"));
-//        System.out.println("-----------getRelatedClassesOfComp-------------");
-//        System.out.println(getNode.getRelatedClassesOfComp());
+        System.out.println("-----------getRelatedClassesOfComp-------------");
+        System.out.println(getNode.getRelatedClassesOfComp("System.Component3", "System", classRequiredElement, portRequiredElement));
+        System.out.println("-----------------getRelatedClassesOfClass--------------------");
+        System.out.println(getNode.getRelatedClassesOfClass("System.Class7", "System"));
     }
 
     /**

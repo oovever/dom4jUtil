@@ -213,6 +213,7 @@ public class getNode {
             }
             for (String port : classRequiredElement.get(key)) {
                 for (String targetPort : portDependency.get(port)) {
+                    if(portRequiredElement.containsKey(targetPort))
                     for (String targetClass : portRequiredElement.get(targetPort)) {
                         String globalTargetClassName = getGlobalNodeName(elementName, targetClass);
                         dependencyClass.get(globalSourceClassName).add(globalTargetClassName);
@@ -334,7 +335,7 @@ public class getNode {
             if (key.substring(0,key.lastIndexOf(".")).equals(selectElement)) {
                 for (String children : portRequiredElement.get(key)) {
                     if (childrens.contains(children)) {
-                        target.add(children);
+                        target.add(getGlobalNodeName(loadXmlFile.elementName, children));
                     }
                 }
             }
@@ -344,12 +345,13 @@ public class getNode {
             if (childrens.contains(key)) {
                 for (String port : classRequiredElement.get(key)) {
                     if (port.substring(0, port.lastIndexOf(".")).equals(selectElement)) {
-                        source.add(key);
+                        source.add(getGlobalNodeName(loadXmlFile.elementName,key));
                         break;
                     }
                 }
             }
         }
+        relatedClassesOfComp.put(source, target);
         return relatedClassesOfComp;
     }
 
@@ -372,8 +374,10 @@ public class getNode {
         relatedClassesOfClass.put(Constant.callRelation, callRelation);
 //        获取类之间的继承关系
         Map<Set<String>, Set<String>> extendRelation = getChildClassRelation(loadXmlFile.generalizationElement, childrens, selectClass);
+        relatedClassesOfClass.put(Constant.extendRelation, extendRelation);
 // 获取类之间的实现关系
         Map<Set<String>, Set<String>> implmentRelation = getChildClassRelation(loadXmlFile.realizeElement, childrens, selectClass);
+        relatedClassesOfClass.put(Constant.implementRelation, implmentRelation);
         return relatedClassesOfClass;
     }
 
@@ -388,15 +392,16 @@ public class getNode {
         Map<Set<String>, Set<String>> ClassRelation = new HashMap<>();
         Set<String> source = new HashSet<>();
         Set<String> target = new HashSet<>();
+        if(relationElement.get(selectClass)!=null)
         for (String targetClass : relationElement.get(selectClass)) {
             if (childrens.contains(targetClass)) {
-                target.add(targetClass);
+                target.add(getGlobalNodeName(loadXmlFile.elementName,targetClass));
             }
         }
         for (String sourceClass : relationElement.keySet()) {
             for (String targetClass : relationElement.get(sourceClass)) {
                 if (targetClass.equals(selectClass)) {
-                    source.add(sourceClass);
+                    source.add(getGlobalNodeName(loadXmlFile.elementName,sourceClass));
                     break;
                 }
             }
