@@ -9,7 +9,7 @@ import java.util.Map;
  * @author OovEver
  * 2018/3/28 23:16
  */
-public class Constant {
+public class Constant   {
 //    过滤ownedElement
     public static final String ownedElement = "@ownedElement";
     //    过滤portOfPackage
@@ -22,5 +22,10 @@ public class Constant {
     public static final String System = "architecture:System";
 //    类类型
     public static final String ClassName = "architecture:Class";
-
+//    调用关系
+    public static final String callRelation = "callRelation";
+//    实现关系
+    public static final String implementRelation = "implementRelation";
+//    继承关系
+    public static final String extendRelation = "extendRelation";
 }

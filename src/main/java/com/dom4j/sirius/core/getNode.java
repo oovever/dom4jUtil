@@ -353,4 +353,55 @@ public class getNode {
         return relatedClassesOfComp;
     }
 
+    /**
+     *
+     * @param selectClass 选择的class
+     * @param fatherName 父亲元素
+     * @return 与选定类的（关联、实现、继承）关系
+     */
+    public static Map<String,Map<Set<String>,Set<String>>> getRelatedClassesOfClass(String selectClass, String fatherName) {
+        Map<String,Map<Set<String>,Set<String>>> relatedClassesOfClass = new HashMap<>();
+        //        全局限定名 编号的map
+        Map<String, String> NodeId2globalName = getGlobalNodeNameAndNodeId(loadXmlFile.elementName);
+//        获取相应全局限定名的编号
+        selectClass = NodeId2globalName.get(selectClass);
+        String fatherId = NodeId2globalName.get(fatherName);
+        Set<String> childrens = getNodeChildrenId(fatherId,loadXmlFile.elementName);
+//        获取类之间的调用关系
+        Map<Set<String>, Set<String>> callRelation = getChildClassRelation(loadXmlFile.callElement, childrens, selectClass);
+        relatedClassesOfClass.put(Constant.callRelation, callRelation);
+//        获取类之间的继承关系
+        Map<Set<String>, Set<String>> extendRelation = getChildClassRelation(loadXmlFile.generalizationElement, childrens, selectClass);
+// 获取类之间的实现关系
+        Map<Set<String>, Set<String>> implmentRelation = getChildClassRelation(loadXmlFile.realizeElement, childrens, selectClass);
+        return relatedClassesOfClass;
+    }
+
+    /**
+     *
+     * @param relationElement 请求关系map包含调用 继承 实现
+     * @param childrens 子元素
+     * @param selectClass 选择的类
+     * @return 与选定类的（关联、实现、继承）关系
+     */
+    public static Map<Set<String>,Set<String>> getChildClassRelation(Map<String, List<String>> relationElement, Set<String> childrens,String selectClass) {
+        Map<Set<String>, Set<String>> ClassRelation = new HashMap<>();
+        Set<String> source = new HashSet<>();
+        Set<String> target = new HashSet<>();
+        for (String targetClass : relationElement.get(selectClass)) {
+            if (childrens.contains(targetClass)) {
+                target.add(targetClass);
+            }
+        }
+        for (String sourceClass : relationElement.keySet()) {
+            for (String targetClass : relationElement.get(sourceClass)) {
+                if (targetClass.equals(selectClass)) {
+                    source.add(sourceClass);
+                    break;
+                }
+            }
+        }
+        ClassRelation.put(source, target);
+        return ClassRelation;
+    }
 }
